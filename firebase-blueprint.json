@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "user": {
+      "title": "RegisteredUser",
+      "description": "Information about a registered system user, including admin states and auth credentials.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user identity code, lowercased username."
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name or display label of the user."
+        },
+        "username": {
+          "type": "string",
+          "description": "Lowercase alphanumeric username."
+        },
+        "passwordHash": {
+          "type": "string",
+          "description": "Private security password code for logins."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp string of registration."
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "description": "Indicates if the user has database inspection capabilities."
+        },
+        "isSuper": {
+          "type": "boolean",
+          "description": "Indicates if the user is Hamza Saif with full statements audit rights."
+        }
+      },
+      "required": ["id", "name", "username", "passwordHash", "createdAt"]
+    },
+    "user_state": {
+      "title": "AppState",
+      "description": "The isolated financial state data for a client, containing ledger indices, transactions log, budgets, goals, and visual preferences.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner identifier of this state."
+        },
+        "userName": {
+          "type": "string",
+          "description": "Full name of the user."
+        },
+        "userAvatar": {
+          "type": "string",
+          "description": "Profile emoji or image data string."
+        },
+        "userAge": {
+          "type": "string"
+        },
+        "userProfession": {
+          "type": "string"
+        },
+        "hasOnboarded": {
+          "type": "boolean"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "accounts": {
+          "type": "array"
+        },
+        "categories": {
+          "type": "array"
+        },
+        "transactions": {
+          "type": "array"
+        },
+        "transfers": {
+          "type": "array"
+        },
+        "budgets": {
+          "type": "array"
+        },
+        "goals": {
+          "type": "array"
+        },
+        "debts": {
+          "type": "array"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": ["userId", "accounts", "categories", "transactions"]
+    }
+  },
+  "firestore": {
+    "/users/{username}": {
+      "schema": "user",
+      "description": "Direct user profile documents tracked by unique lowercased usernames to prevent registry collisions."
+    },
+    "/user_states/{username}": {
+      "schema": "user_state",
+      "description": "Deep isolated ledger records containing recent activities, cash pools, budgets and statements config connected directly to lowercased usernames."
+    }
+  }
+}

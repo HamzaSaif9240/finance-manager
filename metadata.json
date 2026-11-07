@@ -1,0 +1,6 @@
+{
+  "name": "Finance Manager",
+  "description": "An elegant offline-first personal finance manager with multi-account tracking, budget control, and detailed analytics.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
